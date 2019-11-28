@@ -4,7 +4,6 @@ import classes from "./Logo.module.css";
 
 type LogoProps = {
   colorScheme: string;
-  clicked: () => void;
 };
 
 const logo: React.FC<LogoProps> = (props: LogoProps) => {
@@ -12,11 +11,7 @@ const logo: React.FC<LogoProps> = (props: LogoProps) => {
     classes.Logo,
     props.colorScheme === "dark" ? classes.Dark : classes.Light
   ];
-  return (
-    <h1 className={logoWithColorScheme.join(" ")} onClick={props.clicked}>
-      My Weather
-    </h1>
-  );
+  return <h1 className={logoWithColorScheme.join(" ")}>My Weather</h1>;
 };
 
 export default logo;
