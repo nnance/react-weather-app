@@ -3,9 +3,9 @@ import React from "react";
 import classes from "./Header.module.css";
 import Logo from "../../elements/Logo/Logo";
 
-type HeaderProps = {
+type HeaderProps = React.PropsWithChildren<{
   color: string;
-};
+}>;
 
 const header: React.FC<HeaderProps> = (props: HeaderProps) => {
   return (
