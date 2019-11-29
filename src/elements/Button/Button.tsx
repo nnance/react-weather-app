@@ -10,7 +10,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<Props> = (props: Props) => {
   const buttonClasses = [
     classes.ButtonWrapper,
-    props.position === "onForm" ? classes.FormButtonWrapper : null
+    props.position === ButtonPosition.onForm ? classes.FormButtonWrapper : null
   ];
   return (
     <div className={buttonClasses.join(" ")}>

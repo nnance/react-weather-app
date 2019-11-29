@@ -6,6 +6,8 @@ import { WeatherStatus } from "./types";
 
 import * as serviceWorker from "./serviceWorker";
 
+import "normalize.css";
+
 ReactDOM.render(
   <App status={WeatherStatus.Clear} degrees={40} />,
   document.getElementById("root")
