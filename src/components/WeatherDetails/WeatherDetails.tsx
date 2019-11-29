@@ -5,9 +5,10 @@ import Icon from "../../elements/Icon/Icon";
 import Temperature from "./Temperature/Temperature";
 import Description from "./Description/Description";
 import Date from "./Date/Date";
+import { WeatherStatus } from "../../types";
 
 type Props = {
-  status: string;
+  status: WeatherStatus;
   degrees: number;
 };
 

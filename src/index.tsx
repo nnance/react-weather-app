@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./containers/App/App";
+import { WeatherStatus } from "./types";
+
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <App status="Clear" degrees={40} />,
+  <App status={WeatherStatus.Clear} degrees={40} />,
   document.getElementById("root")
 );
 
