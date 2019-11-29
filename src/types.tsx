@@ -15,7 +15,8 @@ export enum ColorScheme {
 }
 
 export enum ButtonPosition {
-  onForm = "onForm"
+  onForm = "onForm",
+  onErrorNotice = "onErrorNotice"
 }
 
 export const DateFormat = "dddd, mmmm dd";

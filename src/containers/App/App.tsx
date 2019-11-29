@@ -8,6 +8,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import Card from "../../elements/Card/Card";
 import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
 import { WeatherStatus } from "../../types";
+import Preview from "../../components/Preview/Preview";
+import ErrorNotice from "../../components/ErrorNotice/ErrorNotice";
 
 type Props = {
   status: WeatherStatus;
@@ -28,7 +30,9 @@ const App: React.FC<Props> = (props: Props) => {
       <main className={classes.AppMain}>
         <SearchBar />
         <Card>
+          {/* <Preview /> */}
           <WeatherDetails status={props.status} degrees={props.degrees} />
+          {/* <ErrorNotice /> */}
         </Card>
       </main>
       <Footer />
