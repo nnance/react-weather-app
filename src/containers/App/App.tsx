@@ -9,6 +9,7 @@ import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
 
 type Props = {
   status: string;
+  degrees: number;
 };
 
 const App: React.FC<Props> = (props: Props) => {
@@ -18,7 +19,7 @@ const App: React.FC<Props> = (props: Props) => {
       <main className={classes.AppMain}>
         <SearchBar />
         <Card>
-          <WeatherDetails status={props.status} />
+          <WeatherDetails status={props.status} degrees={props.degrees} />
         </Card>
       </main>
       <Footer />
