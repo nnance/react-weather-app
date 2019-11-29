@@ -8,3 +8,14 @@ export enum WeatherStatus {
   Drizzle = "Drizzle",
   Clouds = "Clouds"
 }
+
+export enum ColorScheme {
+  dark = "dark",
+  light = "light"
+}
+
+export enum ButtonPosition {
+  onForm = "onForm"
+}
+
+export const DateFormat = "dddd, mmmm dd";

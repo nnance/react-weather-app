@@ -1,9 +1,10 @@
 import React from "react";
 
 import classes from "./Button.module.css";
+import { ButtonPosition } from "../../types";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  position: string;
+  position?: ButtonPosition;
 }
 
 const Button: React.FC<Props> = (props: Props) => {

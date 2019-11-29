@@ -21,6 +21,7 @@ const App: React.FC<Props> = (props: Props) => {
       // Set header color based on weather condition; if error, set color to red
       props.error ? "error" : props.status
     ];
+
   return (
     <div className={classes.AppWrapper}>
       <Header color={headerColor} />

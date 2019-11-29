@@ -3,6 +3,7 @@ import React from "react";
 import classes from "./SearchBar.module.css";
 import Button from "../../elements/Button/Button";
 import InputField from "../../elements/InputField/InputField";
+import { ButtonPosition } from "../../types";
 
 const SearchBar: React.FC = () => {
   return (
@@ -13,7 +14,11 @@ const SearchBar: React.FC = () => {
         label="Location"
         placeholder="Enter a city"
       />
-      <Button name="searchSubmit" type="submit" position="onForm">
+      <Button
+        name="searchSubmit"
+        type="submit"
+        position={ButtonPosition.onForm}
+      >
         Set
       </Button>
     </div>
