@@ -5,14 +5,21 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Card from "../../elements/Card/Card";
+import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
 
-const App: React.FC = () => {
+type Props = {
+  status: string;
+};
+
+const App: React.FC<Props> = (props: Props) => {
   return (
     <div className={classes.AppWrapper}>
       <Header color={"#C0B3BC"} />
       <main className={classes.AppMain}>
         <SearchBar />
-        <Card />
+        <Card>
+          <WeatherDetails status={props.status} />
+        </Card>
       </main>
       <Footer />
     </div>
