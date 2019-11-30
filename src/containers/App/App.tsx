@@ -5,43 +5,45 @@ import assetMapping from "../../assets/assetMapping.json";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import {
-  WeatherLocation,
-  WeatherStatus,
-  LocationError,
-  isLocation
-} from "../../types";
+import { WeatherStatus, isLocation, ActiveState } from "../../types";
 import MainCard from "../../components/MainCard/MainCard";
 
 const App: React.FC = () => {
-  const [location, setLocation] = React.useState<
-    WeatherLocation | LocationError
-  >();
+  const [activeState, setActiveState] = React.useState<ActiveState>();
+
+  const getHeaderColor = (state: ActiveState): string => {
+    return assetMapping.colors[
+      !state
+        ? WeatherStatus.default
+        : isLocation(state)
+        ? state.status
+        : WeatherStatus.error
+    ];
+  };
+
+  const toggleActiveState = (): void => {
+    if (!activeState) {
+      setActiveState({
+        location: "Norman, OK",
+        status: WeatherStatus.Clear,
+        degrees: 40
+      });
+    } else if (isLocation(activeState)) {
+      setActiveState({
+        code: 404,
+        description: "Not Found"
+      });
+    } else {
+      setActiveState(undefined);
+    }
+  };
 
   return (
     <div className={classes.AppWrapper}>
-      <Header
-        color={
-          assetMapping.colors[
-            !location
-              ? "default"
-              : isLocation(location)
-              ? location.status
-              : "error"
-          ]
-        }
-      />
+      <Header color={getHeaderColor(activeState)} />
       <main className={classes.AppMain}>
-        <SearchBar
-          onClick={(): void =>
-            setLocation({
-              location: "Norman, OK",
-              status: WeatherStatus.Clear,
-              degrees: 40
-            })
-          }
-        />
-        <MainCard location={location} />
+        <SearchBar onClick={toggleActiveState} />
+        <MainCard location={activeState} />
       </main>
       <Footer />
     </div>

@@ -9,10 +9,10 @@ export type LocationError = {
   description: string;
 };
 
-export function isLocation(
-  x: WeatherLocation | LocationError
-): x is WeatherLocation {
-  return (x as WeatherLocation).location !== undefined;
+export type ActiveState = WeatherLocation | LocationError | undefined;
+
+export function isLocation(state: ActiveState): state is WeatherLocation {
+  return (state as WeatherLocation).location !== undefined;
 }
 
 export enum WeatherStatus {
