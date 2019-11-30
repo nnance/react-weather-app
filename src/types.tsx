@@ -1,3 +1,20 @@
+export type WeatherLocation = {
+  location: string;
+  status: WeatherStatus;
+  degrees: number;
+};
+
+export type LocationError = {
+  code: number;
+  description: string;
+};
+
+export function isLocation(
+  x: WeatherLocation | LocationError
+): x is WeatherLocation {
+  return (x as WeatherLocation).location !== undefined;
+}
+
 export enum WeatherStatus {
   default = "default",
   error = "error",

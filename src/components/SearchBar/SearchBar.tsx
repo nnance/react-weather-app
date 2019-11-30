@@ -5,7 +5,11 @@ import Button from "../../elements/Button/Button";
 import InputField from "../../elements/InputField/InputField";
 import { ButtonPosition } from "../../types";
 
-const SearchBar: React.FC = () => {
+type Props = {
+  onClick: () => void;
+};
+
+const SearchBar: React.FC<Props> = (props: Props) => {
   return (
     <div className={classes.SearchBarWrapper}>
       <InputField
@@ -18,6 +22,7 @@ const SearchBar: React.FC = () => {
         name="searchSubmit"
         type="submit"
         position={ButtonPosition.onForm}
+        onClick={props.onClick}
       >
         Set
       </Button>

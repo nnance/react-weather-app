@@ -14,7 +14,7 @@ const Button: React.FC<Props> = (props: Props) => {
   ];
   return (
     <div className={buttonClasses.join(" ")}>
-      <button type={props.type} name={props.name}>
+      <button type={props.type} name={props.name} onClick={props.onClick}>
         {props.children}
       </button>
     </div>

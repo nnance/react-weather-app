@@ -5,35 +5,43 @@ import assetMapping from "../../assets/assetMapping.json";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Card from "../../elements/Card/Card";
-import WeatherDetails from "../../components/WeatherDetails/WeatherDetails";
-import { WeatherStatus } from "../../types";
-import Preview from "../../components/Preview/Preview";
-import ErrorNotice from "../../components/ErrorNotice/ErrorNotice";
+import {
+  WeatherLocation,
+  WeatherStatus,
+  LocationError,
+  isLocation
+} from "../../types";
+import MainCard from "../../components/MainCard/MainCard";
 
-type Props = {
-  status: WeatherStatus;
-  degrees: number;
-  error?: string;
-};
-
-const App: React.FC<Props> = (props: Props) => {
-  const headerColor =
-    assetMapping.colors[
-      // Set header color based on weather condition; if error, set color to red
-      props.error ? "error" : props.status
-    ];
+const App: React.FC = () => {
+  const [location, setLocation] = React.useState<
+    WeatherLocation | LocationError
+  >();
 
   return (
     <div className={classes.AppWrapper}>
-      <Header color={headerColor} />
+      <Header
+        color={
+          assetMapping.colors[
+            !location
+              ? "default"
+              : isLocation(location)
+              ? location.status
+              : "error"
+          ]
+        }
+      />
       <main className={classes.AppMain}>
-        <SearchBar />
-        <Card>
-          {/* <Preview /> */}
-          <WeatherDetails status={props.status} degrees={props.degrees} />
-          {/* <ErrorNotice /> */}
-        </Card>
+        <SearchBar
+          onClick={(): void =>
+            setLocation({
+              location: "Norman, OK",
+              status: WeatherStatus.Clear,
+              degrees: 40
+            })
+          }
+        />
+        <MainCard location={location} />
       </main>
       <Footer />
     </div>
