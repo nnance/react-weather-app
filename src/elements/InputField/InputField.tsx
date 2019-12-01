@@ -17,6 +17,7 @@ const inputField: React.FC<InputProps> = (props: InputProps) => {
         name={props.name}
         placeholder={props.placeholder}
         value={props.value}
+        onChange={props.onChange}
         required
       />
     </div>

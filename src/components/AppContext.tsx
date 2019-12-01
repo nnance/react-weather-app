@@ -1,16 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { WeatherLocation } from "../types";
-
-export type Action =
-  | { type: "request" }
-  | { type: "success"; results: WeatherLocation }
-  | { type: "failure"; error: string };
-
-export type ActiveState =
-  | { status: "empty" }
-  | { status: "loading" }
-  | { status: "error"; error: string }
-  | { status: "success"; results: WeatherLocation };
+import { ActiveState, Action, StateStatus } from "../api/reducer";
 
 type Props = React.PropsWithChildren<{
   reducer: React.Reducer<ActiveState, Action>;
@@ -20,8 +9,8 @@ type Props = React.PropsWithChildren<{
 type StateContextReducer = [ActiveState, React.Dispatch<Action>];
 
 export const StateContext = createContext<StateContextReducer>([
-  { status: "empty" },
-  (): ActiveState => ({ status: "empty" })
+  { status: StateStatus.empty },
+  (): ActiveState => ({ status: StateStatus.empty })
 ]);
 
 export const StateProvider: React.FC<Props> = ({
