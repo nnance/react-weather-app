@@ -27,6 +27,6 @@ export const getWeather = (location: string): Promise<WeatherLocation> => {
           description: "Not Found"
         });
       }
-    }, 100);
+    }, 1500);
   });
 };

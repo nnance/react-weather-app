@@ -13,11 +13,11 @@ import { reducer, ActiveState, StateStatus } from "../../api/reducer";
 const App: React.FC = () => {
   const getHeaderColor = (state: ActiveState): string => {
     return assetMapping.colors[
-      state.status === StateStatus.empty
-        ? WeatherStatus.default
-        : state.status === StateStatus.success
+      state.status === StateStatus.success
         ? state.results.status
-        : WeatherStatus.error
+        : state.status === StateStatus.error
+        ? WeatherStatus.error
+        : WeatherStatus.default
     ];
   };
 

@@ -5,6 +5,7 @@ import Button from "../../elements/Button/Button";
 import InputField from "../../elements/InputField/InputField";
 import { ButtonPosition } from "../../types";
 import { useStateValue } from "../AppContext";
+import { ActionTypes } from "../../api/reducer";
 
 const SearchBar: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -13,7 +14,7 @@ const SearchBar: React.FC = () => {
 
   const toggleActiveState = (): void => {
     if (location) {
-      dispatch({ type: "setLocation", location });
+      dispatch({ type: ActionTypes.setLocation, location });
     }
   };
 

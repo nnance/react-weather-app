@@ -8,11 +8,18 @@ export enum StateStatus {
   set
 }
 
+export enum ActionTypes {
+  setLocation,
+  setStatus,
+  setResults,
+  setError
+}
+
 export type Action =
-  | { type: "setLocation"; location: string }
-  | { type: "setStatus"; status: StateStatus }
-  | { type: "setResults"; results: WeatherLocation }
-  | { type: "setError"; error: string };
+  | { type: ActionTypes.setLocation; location: string }
+  | { type: ActionTypes.setStatus; status: StateStatus }
+  | { type: ActionTypes.setResults; results: WeatherLocation }
+  | { type: ActionTypes.setError; error: string };
 
 export type ActiveState =
   | { status: StateStatus.empty }
@@ -22,23 +29,23 @@ export type ActiveState =
 
 export const reducer = (state: ActiveState, action: Action): ActiveState => {
   switch (action.type) {
-    case "setLocation":
+    case ActionTypes.setLocation:
       return {
         status: StateStatus.set,
         location: action.location
       };
 
-    case "setStatus":
+    case ActionTypes.setStatus:
       return state.status === StateStatus.empty
         ? { status: StateStatus.empty }
         : { ...state, status: StateStatus.loading };
 
-    case "setResults":
+    case ActionTypes.setResults:
       return state.status === StateStatus.empty
         ? { status: StateStatus.empty }
         : { ...state, status: StateStatus.success, results: action.results };
 
-    case "setError":
+    case ActionTypes.setError:
       return state.status === StateStatus.empty
         ? { status: StateStatus.empty }
         : { ...state, status: StateStatus.error, error: action.error };
