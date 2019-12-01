@@ -2,22 +2,22 @@ import React from "react";
 import Card from "../../elements/Card/Card";
 import Preview from "../Preview/Preview";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
-import { WeatherLocation, LocationError, isLocation } from "../../types";
 import ErrorNotice from "../ErrorNotice/ErrorNotice";
+import { ActiveState } from "../AppContext";
 
 type Props = {
-  location: WeatherLocation | LocationError | undefined;
+  location: ActiveState;
 };
 
 const MainCard: React.FC<Props> = (props: Props) => {
   return (
     <Card>
-      {!props.location ? (
+      {props.location.status === "empty" ? (
         <Preview />
-      ) : isLocation(props.location) ? (
+      ) : props.location.status === "success" ? (
         <WeatherDetails
-          status={props.location.status}
-          degrees={props.location.degrees}
+          status={props.location.results.status}
+          degrees={props.location.results.degrees}
         />
       ) : (
         <ErrorNotice />

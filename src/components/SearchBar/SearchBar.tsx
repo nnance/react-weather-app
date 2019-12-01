@@ -3,13 +3,29 @@ import React from "react";
 import classes from "./SearchBar.module.css";
 import Button from "../../elements/Button/Button";
 import InputField from "../../elements/InputField/InputField";
-import { ButtonPosition } from "../../types";
+import { ButtonPosition, WeatherStatus } from "../../types";
+import { useStateValue } from "../AppContext";
 
-type Props = {
-  onClick: () => void;
-};
+const SearchBar: React.FC = () => {
+  const [activeState, dispatch] = useStateValue();
 
-const SearchBar: React.FC<Props> = (props: Props) => {
+  const toggleActiveState = (): void => {
+    if (activeState.status === "empty") {
+      dispatch({
+        type: "success",
+        results: {
+          location: "Norman, OK",
+          status: WeatherStatus.Clear,
+          degrees: 40
+        }
+      });
+    } else if (activeState.status === "success") {
+      dispatch({ type: "failure", error: "Not Found" });
+    } else {
+      dispatch({ type: "request" });
+    }
+  };
+
   return (
     <div className={classes.SearchBarWrapper}>
       <InputField
@@ -22,7 +38,7 @@ const SearchBar: React.FC<Props> = (props: Props) => {
         name="searchSubmit"
         type="submit"
         position={ButtonPosition.onForm}
-        onClick={props.onClick}
+        onClick={toggleActiveState}
       >
         Set
       </Button>

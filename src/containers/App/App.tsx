@@ -5,48 +5,41 @@ import assetMapping from "../../assets/assetMapping.json";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { WeatherStatus, isLocation, ActiveState } from "../../types";
+import { WeatherStatus } from "../../types";
 import MainCard from "../../components/MainCard/MainCard";
+import {
+  StateProvider,
+  ActiveState,
+  StateContext
+} from "../../components/AppContext";
+import { reducer } from "./reducer";
 
 const App: React.FC = () => {
-  const [activeState, setActiveState] = React.useState<ActiveState>();
-
   const getHeaderColor = (state: ActiveState): string => {
     return assetMapping.colors[
-      !state
+      state.status === "empty"
         ? WeatherStatus.default
-        : isLocation(state)
-        ? state.status
+        : state.status === "success"
+        ? state.results.status
         : WeatherStatus.error
     ];
   };
 
-  const toggleActiveState = (): void => {
-    if (!activeState) {
-      setActiveState({
-        location: "Norman, OK",
-        status: WeatherStatus.Clear,
-        degrees: 40
-      });
-    } else if (isLocation(activeState)) {
-      setActiveState({
-        code: 404,
-        description: "Not Found"
-      });
-    } else {
-      setActiveState(undefined);
-    }
-  };
-
   return (
-    <div className={classes.AppWrapper}>
-      <Header color={getHeaderColor(activeState)} />
-      <main className={classes.AppMain}>
-        <SearchBar onClick={toggleActiveState} />
-        <MainCard location={activeState} />
-      </main>
-      <Footer />
-    </div>
+    <StateProvider initialState={{ status: "empty" }} reducer={reducer}>
+      <StateContext.Consumer>
+        {([state]): React.ReactFragment => (
+          <div className={classes.AppWrapper}>
+            <Header color={getHeaderColor(state)} />
+            <main className={classes.AppMain}>
+              <SearchBar />
+              <MainCard location={state} />
+            </main>
+            <Footer />
+          </div>
+        )}
+      </StateContext.Consumer>
+    </StateProvider>
   );
 };
 
