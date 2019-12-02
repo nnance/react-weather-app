@@ -9,12 +9,22 @@ A simple [react.js](https://www.reactjs.org) weather app that allows you to get 
 
 This project is based on the [Simple React Weather App](https://github.com/konstantinmuenster/simple-react-js-weather-app) but extends it by using Function Components and React Hooks with TypeScript.   It also has better separation of the API from the main app code by leveraging react hooks.
 
+It uses the [Open Weather API](https://openweathermap.org) which requires an account to get an API Key.
+
 ## Getting Started
 
 Install dependencies
 
 ```
 npm install
+```
+
+Retrieve an API Key from [OpenWeather](https://openweathermap.org) by copying and put the following line in 
+
+file: **.env.local**
+
+```
+REACT_APP_WEATHER_API_KEY=xxxxxxxxxxxxxxx
 ```
 
 Running in development mode at https://localhost:3000
