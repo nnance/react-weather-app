@@ -1,7 +1,7 @@
 import React from "react";
 import { useStateValue } from "../components/AppContext";
 import { getWeather, WeatherLocation, LocationError } from "./weather";
-import { StateStatus, ActionTypes } from "./reducer";
+import { StateStatus, ActionTypes } from "../types";
 
 export const useWeather = (): void => {
   const [activeState, dispatch] = useStateValue();
