@@ -1,3 +1,23 @@
+# my-weather-app
+
+A simple [react.js](https://www.reactjs.org) weather app that allows you to get the current weather information, based on the city you enter. I created this small project to tryout a few new React TypeScript tools / concepts.
+
+1. [typescript-eslint](https://typescript-eslint.io/) Try the new replacement for TSLint in a TypeScript project
+2. [React Hooks](https://reactjs.org/docs/hooks-intro.html) Use React Hooks with TypeScript as a global state manager.
+3. [CSS Modules](https://github.com/css-modules/css-modules) Style components with CSS Modules and [create-react-app](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+4. 
+
+Based on 
+
+## References
+
+[State Management with React Hooks and Context API](https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c)
+[The State Reducer Pattern with React Hooks](https://kentcdodds.com/blog/the-state-reducer-pattern-with-react-hooks)
+
+### TypeScript References
+
+[Ultimate React Component Patterns with Typescript](https://levelup.gitconnected.com/ultimate-react-component-patterns-with-typescript-2-8-82990c516935)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

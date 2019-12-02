@@ -2,15 +2,30 @@ import React from "react";
 
 import classes from "./Header.module.css";
 import Logo from "../../elements/Logo/Logo";
-import { ColorScheme } from "../../types";
+import { ColorScheme, WeatherStatus } from "../../types";
+import { ActiveState, StateStatus } from "../../api/reducer";
+import assetMapping from "../../assets/assetMapping.json";
 
-type HeaderProps = React.PropsWithChildren<{
-  color: string;
+type Props = React.PropsWithChildren<{
+  state: ActiveState;
 }>;
 
-const header: React.FC<HeaderProps> = (props: HeaderProps) => {
+const header: React.FC<Props> = (props: Props) => {
+  const getHeaderColor = (state: ActiveState): string => {
+    return assetMapping.colors[
+      state.status === StateStatus.success
+        ? state.results.status
+        : state.status === StateStatus.error
+        ? WeatherStatus.error
+        : WeatherStatus.default
+    ];
+  };
+
   return (
-    <header className={classes.Header} style={{ backgroundColor: props.color }}>
+    <header
+      className={classes.Header}
+      style={{ backgroundColor: getHeaderColor(props.state) }}
+    >
       <Logo colorScheme={ColorScheme.light} />
     </header>
   );

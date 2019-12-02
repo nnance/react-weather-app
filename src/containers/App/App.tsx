@@ -1,26 +1,13 @@
 import React from "react";
 
 import classes from "./App.module.css";
-import assetMapping from "../../assets/assetMapping.json";
 import Header from "../../components/Header/Header";
+import AppMain from "../../components/AppMain/AppMain";
 import Footer from "../../components/Footer/Footer";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import { WeatherStatus } from "../../types";
-import MainCard from "../../components/MainCard/MainCard";
 import { StateProvider, StateContext } from "../../components/AppContext";
-import { reducer, ActiveState, StateStatus } from "../../api/reducer";
+import { reducer, StateStatus } from "../../api/reducer";
 
 const App: React.FC = () => {
-  const getHeaderColor = (state: ActiveState): string => {
-    return assetMapping.colors[
-      state.status === StateStatus.success
-        ? state.results.status
-        : state.status === StateStatus.error
-        ? WeatherStatus.error
-        : WeatherStatus.default
-    ];
-  };
-
   return (
     <StateProvider
       initialState={{ status: StateStatus.empty }}
@@ -29,11 +16,8 @@ const App: React.FC = () => {
       <StateContext.Consumer>
         {([state]): React.ReactFragment => (
           <div className={classes.AppWrapper}>
-            <Header color={getHeaderColor(state)} />
-            <main className={classes.AppMain}>
-              <SearchBar />
-              <MainCard location={state} />
-            </main>
+            <Header state={state} />
+            <AppMain state={state} />
             <Footer />
           </div>
         )}
