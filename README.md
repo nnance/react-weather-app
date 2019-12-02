@@ -5,11 +5,27 @@ A simple [react.js](https://www.reactjs.org) weather app that allows you to get 
 1. [typescript-eslint](https://typescript-eslint.io/) Try the new replacement for TSLint in a TypeScript project
 2. [React Hooks](https://reactjs.org/docs/hooks-intro.html) Use React Hooks with TypeScript as a global state manager.
 3. [CSS Modules](https://github.com/css-modules/css-modules) Style components with CSS Modules and [create-react-app](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
-4. 
+4. [File Structure](https://reactjs.org/docs/faq-structure.html) Try an alternative to the recommended File Structure by the React.js team.
 
-Based on 
+This project is based on the [Simple React Weather App](https://github.com/konstantinmuenster/simple-react-js-weather-app) but extends it by using Function Components and React Hooks with TypeScript.   It also has better separation of the API from the main app code by leveraging react hooks.
+
+## Getting Started
+
+Install dependencies
+
+```
+npm install
+```
+
+Running in development mode at https://localhost:3000
+
+```
+npm start
+```
 
 ## References
+
+[How to plan and organize a React project — by building a weather app](https://medium.com/@konstantin.muenster/how-to-plan-and-organize-a-react-project-by-building-a-weather-app-95175b11bd01)
 
 [State Management with React Hooks and Context API](https://medium.com/simply/state-management-with-react-hooks-and-context-api-at-10-lines-of-code-baf6be8302c)
 [The State Reducer Pattern with React Hooks](https://kentcdodds.com/blog/the-state-reducer-pattern-with-react-hooks)
@@ -17,6 +33,14 @@ Based on
 ### TypeScript References
 
 [Ultimate React Component Patterns with Typescript](https://levelup.gitconnected.com/ultimate-react-component-patterns-with-typescript-2-8-82990c516935)
+
+[useTypescript — A Complete Guide to React Hooks and TypeScript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
+
+[Typing a useReducer React hook in TypeScript](https://www.sumologic.com/blog/react-hook-typescript/)
+
+[UseReducer With Typescript](https://dev.to/stephencweiss/usereducer-with-typescript-2kf)
+
+## About
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
