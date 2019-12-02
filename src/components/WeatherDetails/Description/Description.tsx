@@ -1,7 +1,7 @@
 import React from "react";
 
 import classes from "./Description.module.css";
-import { WeatherStatus } from "../../../types";
+import { WeatherStatus } from "../../../api/weather";
 
 type Props = {
   type: WeatherStatus;

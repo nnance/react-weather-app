@@ -5,7 +5,8 @@ import Header from "../../components/Header/Header";
 import AppMain from "../../components/AppMain/AppMain";
 import Footer from "../../components/Footer/Footer";
 import { StateProvider, StateContext } from "../../components/AppContext";
-import { reducer, StateStatus } from "../../api/reducer";
+import { reducer } from "./reducer";
+import { StateStatus } from "../../types";
 
 const App: React.FC = () => {
   return (

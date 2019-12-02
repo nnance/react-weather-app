@@ -5,7 +5,7 @@ import Button from "../../elements/Button/Button";
 import InputField from "../../elements/InputField/InputField";
 import { ButtonPosition } from "../../types";
 import { useStateValue } from "../AppContext";
-import { ActionTypes } from "../../api/reducer";
+import { ActionTypes } from "../../types";
 
 const SearchBar: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

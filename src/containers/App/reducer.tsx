@@ -1,31 +1,4 @@
-import { WeatherLocation } from "./weather";
-
-export enum StateStatus {
-  empty,
-  loading,
-  error,
-  success,
-  set
-}
-
-export enum ActionTypes {
-  setLocation,
-  setStatus,
-  setResults,
-  setError
-}
-
-export type Action =
-  | { type: ActionTypes.setLocation; location: string }
-  | { type: ActionTypes.setStatus; status: StateStatus }
-  | { type: ActionTypes.setResults; results: WeatherLocation }
-  | { type: ActionTypes.setError; error: string };
-
-export type ActiveState =
-  | { status: StateStatus.empty }
-  | { status: StateStatus.set | StateStatus.loading; location: string }
-  | { status: StateStatus.error; location: string; error: string }
-  | { status: StateStatus.success; location: string; results: WeatherLocation };
+import { ActionTypes, StateStatus, ActiveState, Action } from "../../types";
 
 export const reducer = (state: ActiveState, action: Action): ActiveState => {
   switch (action.type) {

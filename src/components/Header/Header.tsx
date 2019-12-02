@@ -2,9 +2,9 @@ import React from "react";
 
 import classes from "./Header.module.css";
 import Logo from "../../elements/Logo/Logo";
-import { ColorScheme, WeatherStatus } from "../../types";
-import { ActiveState, StateStatus } from "../../api/reducer";
 import assetMapping from "../../assets/assetMapping.json";
+import { ActiveState, StateStatus, ColorScheme } from "../../types";
+import { WeatherStatus } from "../../api/weather";
 
 type Props = React.PropsWithChildren<{
   state: ActiveState;

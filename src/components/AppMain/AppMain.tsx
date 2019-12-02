@@ -6,7 +6,7 @@ import Card from "../../elements/Card/Card";
 import Preview from "../Preview/Preview";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
 import ErrorNotice from "../ErrorNotice/ErrorNotice";
-import { ActiveState, StateStatus } from "../../api/reducer";
+import { ActiveState, StateStatus } from "../../types";
 import { MoonLoader } from "react-spinners";
 import { useWeather } from "../../api/useWeather";
 

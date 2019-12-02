@@ -1,13 +1,31 @@
-export enum WeatherStatus {
-  default = "default",
-  error = "error",
-  Rain = "Rain",
-  Clear = "Clear",
-  Thunderstorm = "Thunderstorm",
-  Snow = "Snow",
-  Drizzle = "Drizzle",
-  Clouds = "Clouds"
+import { WeatherLocation } from "./api/weather";
+
+export enum StateStatus {
+  empty,
+  loading,
+  error,
+  success,
+  set
 }
+
+export enum ActionTypes {
+  setLocation,
+  setStatus,
+  setResults,
+  setError
+}
+
+export type Action =
+  | { type: ActionTypes.setLocation; location: string }
+  | { type: ActionTypes.setStatus; status: StateStatus }
+  | { type: ActionTypes.setResults; results: WeatherLocation }
+  | { type: ActionTypes.setError; error: string };
+
+export type ActiveState =
+  | { status: StateStatus.empty }
+  | { status: StateStatus.set | StateStatus.loading; location: string }
+  | { status: StateStatus.error; location: string; error: string }
+  | { status: StateStatus.success; location: string; results: WeatherLocation };
 
 export enum ColorScheme {
   dark = "dark",

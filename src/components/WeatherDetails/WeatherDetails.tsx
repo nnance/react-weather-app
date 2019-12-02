@@ -5,7 +5,7 @@ import Icon from "../../elements/Icon/Icon";
 import Temperature from "./Temperature/Temperature";
 import Description from "./Description/Description";
 import Date from "./Date/Date";
-import { WeatherStatus } from "../../types";
+import { WeatherStatus } from "../../api/weather";
 
 type Props = {
   status: WeatherStatus;

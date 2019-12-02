@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { ActiveState, Action, StateStatus } from "../api/reducer";
+import { ActiveState, Action, StateStatus } from "../types";
 
 type Props = React.PropsWithChildren<{
   reducer: React.Reducer<ActiveState, Action>;
